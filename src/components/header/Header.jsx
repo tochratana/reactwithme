@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 export const Header = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isVisibleHeader, setIsVisibleHeader] = useState(false);
@@ -24,13 +25,22 @@ export const Header = () => {
             <nav aria-label="Global" className="hidden md:block">
               <ul className="flex items-center gap-6 text-sm">
                 <li>
-                  <a
+                  <Link
                     className="text-gray-500 transition hover:text-gray-500/75"
-                    href="#"
+                    to="/"
                   >
                     {" "}
-                    About{" "}
-                  </a>
+                    Home{" "}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="text-gray-500 transition hover:text-gray-500/75"
+                    to="./doc"
+                  >
+                    {" "}
+                    Doc{" "}
+                  </Link>
                 </li>
 
                 <li>
@@ -39,7 +49,7 @@ export const Header = () => {
                     href="#"
                   >
                     {" "}
-                    Careers{" "}
+                    Components{" "}
                   </a>
                 </li>
 
@@ -74,13 +84,13 @@ export const Header = () => {
                 </li>
 
                 <li>
-                  <a
+                  <Link
                     className="text-gray-500 transition hover:text-gray-500/75"
-                    href="#"
+                    to="/apps"
                   >
                     {" "}
                     Blog{" "}
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </nav>

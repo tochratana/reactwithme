@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .scrollbar-extra-thin {
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-width: 1px; /* Extra thin width */
+    scrollbar-color: #f2ecf3 transparent; /* Thumb and track colors */
+  }
+
+  .scrollbar-extra-thin::-webkit-scrollbar {
+    width: 1px; /* Scrollbar width for WebKit browsers */
+    height: 1px; /* Scrollbar height for horizontal scrollbars */
+  }
+
+  .scrollbar-extra-thin::-webkit-scrollbar-thumb {
+    background-color: #deb3e4; /* Thumb color */
+    border-radius: 1px; /* Rounded corners */
+  }
+
+  .scrollbar-extra-thin::-webkit-scrollbar-track {
+    background-color: transparent; /* Track color */
+  }
+  .text-code-extra {
+    padding: 2px;
+    background-color: #ededeb;
+    color: red;
+	margin-left: 4px;
+	border-radius: 4px;
+  }
+}

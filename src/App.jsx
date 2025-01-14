@@ -1,7 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import "./index.css";
 import RoutLayout from "./components/layout/RoutLayout";
-import HeroSection from "./components/pages/homepage/HeroSection";
+import HeroSection from "./pages/homepage/HeroSection";
+import DocPage from "./pages/doc/DocPage";
+// import Apps from "./components/pages/Apps";
+import Apps from "./pages/Apps";
 
 const router = createBrowserRouter([
   {
@@ -12,7 +15,15 @@ const router = createBrowserRouter([
         path: "/",
         element: <HeroSection />,
       },
+      {
+        path: "/doc",
+        element: <DocPage />,
+      },
     ],
+  },
+  {
+    path: "/apps",
+    element: <Apps />,
   },
 ]);
 
