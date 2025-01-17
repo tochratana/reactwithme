@@ -1,7 +1,8 @@
 import { Home } from "lucide-react";
 import Intro from "./introduction/Intro";
-import Installation from "./getting-start/Installation";
+// import Installation from "./getting-start/Installation";
 import { DetailUderstandTheBasic } from "./guideline/UnderstandTheBasic";
+import { Getting_Start_Content } from "./getting-start/Getting_Start";
 export const MainContent = () => {
   // Handle scroll
 
@@ -24,10 +25,10 @@ export const MainContent = () => {
         Guideline
       </h1>
       <DetailUderstandTheBasic />
-      <h1 className="text-4xl font-bold mb-8" id="installation">
-        Installation
+      <h1 className="text-4xl font-bold mb-8" id="section1">
+        Getting Start
       </h1>
-      <Installation />
+      <Getting_Start_Content />
     </main>
   );
 };

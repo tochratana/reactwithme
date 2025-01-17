@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ChevronRight, ChevronDown, Logs, X } from "lucide-react";
 import UnderstandTheBasic from "./guideline/UnderstandTheBasic";
+import Getting_Start from "./getting-start/Getting_Start";
 
 // import handleScrollToSection from "./MainContent";
 export const Sidebar = () => {
@@ -43,46 +44,9 @@ export const Sidebar = () => {
             <UnderstandTheBasic />
             {/* End of Guideline */}
 
-            <div
-              className="cursor-pointer"
-              onClick={() => {
-                setIsGettingStart(!isGettingStart);
-              }}
-            >
-              {isGettingStart ? (
-                <div className="flex items-center justify-between">
-                  <div className="font-medium">Getting Start</div>
-                  <ChevronDown className="w-4 h-4" />
-                </div>
-              ) : (
-                <div className="flex items-center justify-between">
-                  <div className="font-medium">Getting Start</div>
-                  <ChevronRight className="w-4 h-4" />
-                </div>
-              )}
-            </div>
-
-            <div
-              className={`${
-                isGettingStart ? "block" : "hidden"
-              } pl-4 space-y-2 text-sm text-gray-600`}
-            >
-              <li
-                className="list-none cursor-pointer hover:text-secondaryColor"
-                onClick={() => handleScrollToSection("installation")}
-              >
-                Installation
-              </li>
-              <li className="list-none cursor-pointer hover:text-secondaryColor">
-                Configuration
-              </li>
-              <li className="list-none cursor-pointer hover:text-secondaryColor">
-                Playground
-              </li>
-              <li className="list-none cursor-pointer hover:text-secondaryColor">
-                TypeScript Support
-              </li>
-            </div>
+            {/* Start Getting Start */}
+            <Getting_Start />
+            {/* End Getting Start */}
           </div>
         </div>
       </aside>

@@ -1,9 +1,19 @@
-import React from "react";
-import { useState } from "react";
-import { ChevronRight, ChevronDown, Logs, X } from "lucide-react";
+import React, { useState } from "react";
+import { ChevronRight, ChevronDown } from "lucide-react";
 
 const UnderstandTheBasic = () => {
-  // TODO handle scroll section
+  // State to track the active tab
+  const [activeTab, setActiveTab] = useState(1);
+
+  // State to manage the visibility of the Guideline section
+  const [isGuideline, setIsGuideline] = useState(false);
+
+  // Function to handle tab clicks
+  const handleTabClick = (tabNumber) => {
+    setActiveTab(tabNumber);
+  };
+
+  // Function to handle smooth scrolling to sections
   const handleScrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
@@ -11,76 +21,83 @@ const UnderstandTheBasic = () => {
     }
   };
 
-  const [isGuideline, setIsGuideline] = useState(false);
-  return (
-    <div>
-      <div
-        className="cursor-pointer"
-        onClick={() => {
-          setIsGuideline(!isGuideline);
-        }}
-      >
-        {isGuideline ? (
-          <div className="flex items-center justify-between">
-            <div className="font-medium">Guideline</div>
-            <ChevronDown className="w-4 h-4" />
-          </div>
-        ) : (
-          <div className="flex items-center justify-between">
-            <div className="font-medium">Guideline</div>
-            <ChevronRight className="w-4 h-4" />
-          </div>
-        )}
-      </div>
+  // Dynamic list of sidebar items
+  const sidebarItems = [
+    { id: 1, label: "Understand the Basics", sectionId: "understandthebasic" },
+    {
+      id: 2,
+      label: "Start with React Basics",
+      sectionId: "startwithreactbasic",
+    },
+    {
+      id: 3,
+      label: "Understand React Core Concepts",
+      sectionId: "understandreactcoreconcepts",
+    },
+    { id: 4, label: "Style Your React App", sectionId: "styleyourapp" },
+    { id: 5, label: "Manage State Efficiently", sectionId: "managestate" },
+    { id: 6, label: "API Integration", sectionId: "apiintegration" },
+    { id: 7, label: "Explore Advanced Topics", sectionId: "advancedtopics" },
+    { id: 8, label: "Build Projects", sectionId: "buildprojects" },
+    {
+      id: 9,
+      label: "Learn Backend Integration",
+      sectionId: "backendintegration",
+    },
+    { id: 10, label: "Deploy Your Applications", sectionId: "deployapps" },
+    {
+      id: 11,
+      label: "Recommended Learning Resources",
+      sectionId: "learningresources",
+    },
+  ];
 
-      <div
-        className={`${
-          isGuideline ? "block" : "hidden"
-        } pl-4 space-y-2 text-sm text-gray-600`}
-      >
-        <li
-          className="list-none cursor-pointer hover:text-secondaryColor"
-          onClick={() => handleScrollToSection("understandthebasic")}
+  return (
+    <div className="flex">
+      {/* Sidebar */}
+      <aside className="w-64">
+        {/* Guideline Section */}
+        <div
+          className="cursor-pointer"
+          onClick={() => {
+            setIsGuideline(!isGuideline);
+          }}
         >
-          Understand the Basics
-        </li>
-        <li
-          className="list-none cursor-pointer hover:text-secondaryColor"
-          onClick={() => handleScrollToSection("startwithreactbasic")}
+          {isGuideline ? (
+            <div className="flex items-center justify-between">
+              <div className="font-medium">Guideline</div>
+              <ChevronDown className="w-4 h-4" />
+            </div>
+          ) : (
+            <div className="flex items-center justify-between">
+              <div className="font-medium">Guideline</div>
+              <ChevronRight className="w-4 h-4" />
+            </div>
+          )}
+        </div>
+
+        {/* Sidebar Items */}
+        <div
+          className={`${
+            isGuideline ? "block" : "hidden"
+          } pl-4 space-y-2 text-sm text-gray-600`}
         >
-          Start with React Basics
-        </li>
-        <li
-          className="list-none cursor-pointer hover:text-secondaryColor"
-          onClick={() => handleScrollToSection("understandreactcoreconcepts")}
-        >
-          Understand React Core Concepts
-        </li>
-        <li className="list-none cursor-pointer hover:text-secondaryColor">
-          Style Your React App
-        </li>
-        <li className="list-none cursor-pointer hover:text-secondaryColor">
-          Manage State Efficiently
-        </li>
-        <li className="list-none cursor-pointer hover:text-secondaryColor">
-          API Integration
-        </li>
-        <li className="list-none cursor-pointer hover:text-secondaryColor">
-          Explore Advanced Topics
-        </li>
-        <li className="list-none cursor-pointer hover:text-secondaryColor">
-          Build Projects
-        </li>
-        <li className="list-none cursor-pointer hover:text-secondaryColor">
-          Learn Backend Integration
-        </li>
-        <li className="list-none cursor-pointer hover:text-secondaryColor">
-          Deploy Your Applications
-        </li>
-        <li className="list-none cursor-pointer hover:text-secondaryColor">
-          Recommended Learning Resources
-        </li>
-      </div>
+          {sidebarItems.map((item) => (
+            <div
+              key={item.id}
+              className={`list-none cursor-pointer hover:text-secondaryColor ${
+                activeTab === item.id ? "text-secondaryColor" : ""
+              }`}
+              onClick={() => {
+                handleTabClick(item.id);
+                handleScrollToSection(item.sectionId);
+              }}
+            >
+              {item.label}
+            </div>
+          ))}
+        </div>
+      </aside>
     </div>
   );
 };
@@ -88,6 +105,7 @@ const UnderstandTheBasic = () => {
 export const DetailUderstandTheBasic = () => {
   return (
     <div>
+      {/* 01 */}
       <h1 className="text-xl font-bold m-3" id="understandthebasic">
         Uderstand The Basic
       </h1>
@@ -107,6 +125,7 @@ export const DetailUderstandTheBasic = () => {
           </li>
         </ul>
       </ul>
+      {/* 02 */}
       <h1 className="text-xl font-bold m-3" id="startwithreactbasic">
         Start with React Basic
       </h1>
@@ -130,7 +149,8 @@ export const DetailUderstandTheBasic = () => {
           submissions.
         </li>
       </ul>
-      <h1 className="text-xl font-bold m-3" id="startwithreactbasic">
+      {/* 03 */}
+      <h1 className="text-xl font-bold m-3" id="understandreactcoreconcepts">
         Understand React Core Concepts
       </h1>
       <p>Dive deeper into key concepts:</p>
@@ -153,7 +173,8 @@ export const DetailUderstandTheBasic = () => {
         <li>Lists and Keys: Dynamically render lists using .map().</li>
       </ul>
       <p>Practical Task: Build a simple Todo App.</p>
-      <h1 className="text-xl font-bold m-3" id="startwithreactbasic">
+      {/* 04 */}
+      <h1 className="text-xl font-bold m-3" id="styleyourapp">
         Style Your React App
       </h1>
       <p>Use Tailwind CSS (your favorite) to style your projects:</p>
@@ -167,7 +188,8 @@ export const DetailUderstandTheBasic = () => {
           </a>
         </li>
       </ul>
-      <h1 className="text-xl font-bold m-3" id="startwithreactbasic">
+      {/* 05 */}
+      <h1 className="text-xl font-bold m-3" id="managestate">
         Manage State Efficiently
       </h1>
       <p>Learn advanced state management:</p>
@@ -179,7 +201,8 @@ export const DetailUderstandTheBasic = () => {
         </li>
       </ul>
       <p>Practical Task: Create a shopping cart system.</p>
-      <h1 className="text-xl font-bold m-3" id="startwithreactbasic">
+      {/* 06 */}
+      <h1 className="text-xl font-bold m-3" id="apiintegration">
         API Integration
       </h1>
       <p>Learn to fetch and manipulate data from external APIs:</p>
@@ -192,7 +215,8 @@ export const DetailUderstandTheBasic = () => {
         Practical Task: Build a Weather App that fetches data from an API like
         OpenWeatherMap.
       </p>
-      <h1 className="text-xl font-bold m-3" id="startwithreactbasic">
+      {/* 07 */}
+      <h1 className="text-xl font-bold m-3" id="advancedtopics">
         Explore Advanced Topics
       </h1>
       <ul className="list-disc leading-8 pl-5">
@@ -204,8 +228,48 @@ export const DetailUderstandTheBasic = () => {
           useCallback.
         </li>
       </ul>
-      <h1 className="text-xl font-bold m-3" id="startwithreactbasic">
+      {/* 08 */}
+      <h1 className="text-xl font-bold m-3" id="buildprojects">
         Build Projects
+      </h1>
+      <p>
+        Building projects will solidify your learning. Start small and gradually
+        work on complex apps:
+      </p>
+      <ul className="list-decimal leading-8 pl-5">
+        <li>Portfolio Website</li>
+        <li>E-commerce Website (your favorite project idea 🛒)</li>
+        <li>Social Media Dashboard</li>
+      </ul>
+      {/* 09 learn backend intergration */}
+      <h1 className="text-xl font-bold m-3" id="backendintegration">
+        Learn Backend Integration
+      </h1>
+      <p>
+        Building projects will solidify your learning. Start small and gradually
+        work on complex apps:
+      </p>
+      <ul className="list-decimal leading-8 pl-5">
+        <li>Portfolio Website</li>
+        <li>E-commerce Website (your favorite project idea 🛒)</li>
+        <li>Social Media Dashboard</li>
+      </ul>
+      {/* 10 Deploy  */}
+      <h1 className="text-xl font-bold m-3" id="deployapps">
+        Deploy Your Applications
+      </h1>
+      <p>
+        Building projects will solidify your learning. Start small and gradually
+        work on complex apps:
+      </p>
+      <ul className="list-decimal leading-8 pl-5">
+        <li>Portfolio Website</li>
+        <li>E-commerce Website (your favorite project idea 🛒)</li>
+        <li>Social Media Dashboard</li>
+      </ul>
+      {/* 11 Recommended Learning Resources */}
+      <h1 className="text-xl font-bold m-3" id="learningresources">
+        Recommended Learning Resources
       </h1>
       <p>
         Building projects will solidify your learning. Start small and gradually
